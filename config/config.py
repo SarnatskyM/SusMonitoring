@@ -1,0 +1,4 @@
+TOKEN = "6805063860:AAFJElB4vYbO7byomFyj3EYT2RN9vvZM-8M"
+WEB_HOST = "https://traek.ru/"
+
+admins = [899845477,1314545394]
