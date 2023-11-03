@@ -1,5 +1,6 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
+#keyboard in start
 start_keyboard = ReplyKeyboardMarkup(
     keyboard=[
         [
@@ -13,6 +14,7 @@ start_keyboard = ReplyKeyboardMarkup(
     resize_keyboard=True
 )
 
+# keyboard in settings
 fix_keyboard = ReplyKeyboardMarkup(
     keyboard=[
         [

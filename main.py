@@ -12,7 +12,7 @@ dp = Dispatcher(bot)
 @dp.message_handler(commands=["start"])
 async def cmd_start(message: types.Message):
     if message.from_user.id in admins:
-        await message.answer(ru_text['hello'], reply_markup=start_keyboard, parse_mode="HTML")
+        await message.answer(f"Здравствуй, {hbold(message.from_user.full_name)}.\nВаша роль - Администратор", reply_markup=start_keyboard, parse_mode="HTML")
         await message.answer("Выберите действие")
         await message.answer_sticker("https://chpic.su/_data/stickers/m/menhera_anime/menhera_anime_006.webp?v=1693440002", "rb")
     else:
