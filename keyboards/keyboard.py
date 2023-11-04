@@ -1,4 +1,4 @@
-from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
 
 #keyboard in start
 start_keyboard = ReplyKeyboardMarkup(
@@ -13,13 +13,12 @@ start_keyboard = ReplyKeyboardMarkup(
     ],
     resize_keyboard=True
 )
-
 # keyboard in settings
 fix_keyboard = ReplyKeyboardMarkup(
     keyboard=[
         [
-            KeyboardButton(text="🗘Перезапустить бд"),
-            KeyboardButton(text="🛇Оборвать соединение"),
+            KeyboardButton(text="🛠Перезапустить бд"),
+            KeyboardButton(text="🚨Оборвать соединение"),
             KeyboardButton(text="🗑Отчистить мусор")
         ],
         [

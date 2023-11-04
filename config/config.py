@@ -1,4 +1,5 @@
-TOKEN = "6805063860:AAFJElB4vYbO7byomFyj3EYT2RN9vvZM-8M"
+TOKEN = "6805063860:AAE8ZZfNMQrtz_63CKvys-7xBjIyc-uHais"
 WEB_HOST = "https://traek.ru/"
+BACK_HOST = "http://localhost:3000"
 
-admins = [899845477,1314545394]
+admins = [899845477]
