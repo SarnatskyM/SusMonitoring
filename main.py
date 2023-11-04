@@ -66,7 +66,7 @@ async def btn_back(message: types.Message):
 
 
 # Fixing func keyboard 
-@dp.message_handler(Text(equals=["🛠Перезапустить бд"]))
+@dp.message_handler(Text(equals=["🛠Перезапустить бд и восстановить с контрольной точки"]))
 async def btn_reloadbd(message: types.Message):
     if message.from_user.id in admins:
         await message.answer("Подождите пару секунд.....")
@@ -108,7 +108,8 @@ async def checkStatus():
                     else:
                         await bot.send_message(user_id, alertCard, parse_mode='HTML')
         else:
-            await bot.send_message(user_id, "Ошибка при доступе к бэкенду")
+            for user_id in admins:
+                await bot.send_message(user_id, "Проблемы с бэкендом")
         
         await asyncio.sleep(30)
 

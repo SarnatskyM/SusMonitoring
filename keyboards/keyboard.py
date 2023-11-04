@@ -17,12 +17,11 @@ start_keyboard = ReplyKeyboardMarkup(
 fix_keyboard = ReplyKeyboardMarkup(
     keyboard=[
         [
-            KeyboardButton(text="🛠Перезапустить бд"),
             KeyboardButton(text="🚨Оборвать соединение"),
             KeyboardButton(text="🗑Отчистить мусор")
         ],
         [
-            KeyboardButton(text="Восстановление с контрольной точки")
+            KeyboardButton(text="🛠Перезапустить бд и восстановить с контрольной точки")
         ],
         [
             KeyboardButton(text="← Назад")
