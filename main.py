@@ -59,7 +59,7 @@ async def btn_status(message: types.Message):
 @dp.message_handler(Text(equals=["🔴Текущие ошибки"]))
 async def bts_errors(message: types.Message):
     if message.from_user.id in admins:
-        await message.answer("Текущее ошибки")
+        await message.answer("Текущие ошибки")
 # ---------------------------
 
 
@@ -89,17 +89,17 @@ async def btn_reloadbd(message: types.Message):
         await message.answer_sticker("https://chpic.su/_data/stickers/m/menhera_anime/menhera_anime_045.webp?v=1693440002", "rb")
         
 
-@dp.message_handler(Text(equals=["🚨Оборвать соединение"]))
+@dp.message_handler(Text(equals=["🚨Разорвать соединение"]))
 async def btn_disconnect(message: types.Message):
     if message.from_user.id in admins:
         await message.answer("Подождите пару секунд.....")
         await message.answer_sticker("https://chpic.su/_data/stickers/m/menhera_anime/menhera_anime_045.webp?v=1693440002", "rb")
 
-@dp.message_handler(Text(equals=["🗑Отчистить мусор"]))
+@dp.message_handler(Text(equals=["🗑Вынести мусор"]))
 async def btn_clear(message: types.Message):
     if message.from_user.id in admins:
         await message.answer("Подождите пару секунд.....")
-        await message.answer("Выберите таблицу которую хотите отчистить", reply_markup=get_table)
+        await message.answer("Выберите таблицу которую хотите почистить", reply_markup=get_table)
         await message.answer_sticker("https://chpic.su/_data/stickers/m/menhera_anime/menhera_anime_045.webp?v=1693440002", "rb")
         await GetVacuumState.first()
 
@@ -119,12 +119,6 @@ async def state_getFinish(message: types.Message, state: FSMContext):
     else:
         await message.answer(f"Не удалось очистить таблицу {data['table']}", reply_markup=fix_keyboard)
     await state.finish() 
-
-@dp.message_handler(Text(equals=["Восстановление с контрольной точки"]))
-async def btn_recovery(message: types.Message):
-    if message.from_user.id in admins:
-        await message.answer("Подождите пару секунд.....")
-        await message.answer_sticker("https://chpic.su/_data/stickers/m/menhera_anime/menhera_anime_045.webp?v=1693440002", "rb")
 # ---------------------------
 
 async def checkStatus():
@@ -132,20 +126,16 @@ async def checkStatus():
         response = getStatus()
         keyboard = types.InlineKeyboardMarkup()
         keyboard.add(types.InlineKeyboardButton(text="Отказаться", callback_data="fail"))
-        if not response['allerts']:
-            return;
         if response != 500:
             for user_id in admins:
                 for alert in response['allerts']:
                     alertCard = f"<b>[{alert['data'] if alert['data'] else ''}] {alert['description']}</b> " \
                                 f"\n\nТип ошибки - {alert['type'] if alert['type'] else 'Неизвестен'}"
                     if alert['type'] == 3:
-                        kbbk = InlineKeyboardMarkup(row_width=1).add(InlineKeyboardButton(text='Оборвать соединение', callback_data=f'pid:{alert["data"]}'))
+                        kbbk = InlineKeyboardMarkup(row_width=1).add(InlineKeyboardButton(text='Разорвать соединение', callback_data=f'pid:{alert["data"]}'))
                         await bot.send_message(user_id, alertCard, parse_mode='HTML', reply_markup=kbbk)
                     else:
                         await bot.send_message(user_id, alertCard, parse_mode='HTML')
-                else :
-                    await bot.send_message(user_id, "Все ошибки обработаны")
         else:
             for user_id in admins:
                 await bot.send_message(user_id, "Проблемы с бэкендом")
@@ -158,9 +148,9 @@ async def inline_kb_answer_callback_handler(call: types.CallbackQuery):
    pid = call.data.split(":")[1]
    response = disconnectCon(pid)
    if response == 500:
-       await call.answer("Не удалось оборвать соединение")
+       await call.answer("Не удалось разорвать соединение")
    elif response:
-       await call.answer("Соединение оборвано")
+       await call.answer("Соединение разорвать")
    else:
        await call.answer(f"<b><i>{response['data']['data']} - [{response['data']['type']}</b></i>\n{response['data']['description']}")
     

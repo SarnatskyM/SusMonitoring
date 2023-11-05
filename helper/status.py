@@ -34,7 +34,7 @@ def getVacuum(table_name, type):
 
 def getShutdown():
     try:
-        response = requests.get(BACK_HOST + "/api/recovery/shutdown")
+        response = requests.get(BACK_HOST + "/api/recovery/restart")
         if response.status_code == 200:
             return 200
         else:
