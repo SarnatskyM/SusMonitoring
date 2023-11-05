@@ -1,4 +1,4 @@
-from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton, WebAppInfo
 
 #keyboard in start
 start_keyboard = ReplyKeyboardMarkup(
@@ -18,7 +18,7 @@ fix_keyboard = ReplyKeyboardMarkup(
     keyboard=[
         [
             KeyboardButton(text="🚨Оборвать соединение"),
-            KeyboardButton(text="🗑Отчистить мусор")
+            KeyboardButton(text="🗑Отчистить мусор"),
         ],
         [
             KeyboardButton(text="🛠Перезапустить бд и восстановить с контрольной точки")
