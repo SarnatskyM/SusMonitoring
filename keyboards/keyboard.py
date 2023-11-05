@@ -30,5 +30,27 @@ fix_keyboard = ReplyKeyboardMarkup(
     resize_keyboard=True
 )
 
+get_table = ReplyKeyboardMarkup(
+    keyboard=[
+        [
+            KeyboardButton(text="some-ints"),
+            KeyboardButton(text="some-text"),
+            KeyboardButton(text="int2text"),
+        ],
+    ],
+    resize_keyboard=True
+)
+
+
+get_type = ReplyKeyboardMarkup(
+    keyboard=[
+        [
+            KeyboardButton(text="standart"),
+            KeyboardButton(text="full"),
+        ],
+    ],
+    resize_keyboard=True
+)
+
 
 
